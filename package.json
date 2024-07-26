@@ -1,0 +1,14 @@
+{
+  "name": "drive-link-extractor",
+  "version": "1.0.0",
+  "description": "A simple tool to extract Google Drive links from a webpage",
+  "main": "script.js",  
+  "scripts": {
+    "start": "node script.js"  
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
