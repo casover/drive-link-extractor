@@ -7,5 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // عرض الروابط في الصفحة
     const resultElement = document.getElementById('result');
-    resultElement.innerHTML = links.map(link => `<a href="${link}" target="_blank">${link}</a>`).join('<br>');
+    if (resultElement) {
+        resultElement.innerHTML = links.map(link => `<a href="${link}" target="_blank">${link}</a>`).join('<br>');
+    } else {
+        console.error('Element with id "result" not found');
+    }
 });
