@@ -1,25 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Drive Link Extractor</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Google Drive Link Extractor</h1>
-    <input type="text" id="urlInput" placeholder="Enter Google Drive link" size="50">
-    <button onclick="extractFileId()">Extract File ID</button>
-    <p id="result"></p>
-    
-    <script>
-        function extractFileId() {
-            const url = document.getElementById('urlInput').value;
-            console.log('URL entered:', url); // سجل URL المدخل
-            const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-            const fileId = match ? match[1] : 'File ID not found.';
-            console.log('Extracted file ID:', fileId); // سجل ملف ID المستخرج
-            document.getElementById('result').innerText = `https://drive.google.com/uc?export=download&id=${fileId}`;
-        }
-    </script>
+    <div id="result"></div>
 </body>
 </html>
