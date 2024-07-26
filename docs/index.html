@@ -4,48 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Drive Link Extractor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-        }
-        input, button {
-            margin: 10px;
-            padding: 10px;
-        }
-        textarea {
-            width: 80%;
-            height: 200px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <h1>Google Drive Link Extractor</h1>
-    <input type="text" id="urlInput" placeholder="Enter URL to extract links from" size="50">
-    <button onclick="extractDriveLinks()">Extract Google Drive Links</button>
-    <textarea id="result" readonly placeholder="Extracted links will appear here"></textarea>
-
+    <input type="text" id="urlInput" placeholder="Enter Google Drive link" size="50">
+    <button onclick="extractFileId()">Extract File ID</button>
+    <p id="result"></p>
+    
     <script>
-        function extractDriveLinks() {
+        function extractFileId() {
             const url = document.getElementById('urlInput').value;
-            fetch(`/extract?url=${encodeURIComponent(url)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const resultArea = document.getElementById('result');
-                    if (data.success) {
-                        resultArea.value = data.links.join('\n');
-                    } else {
-                        resultArea.value = 'Error: ' + data.message;
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('result').value = 'Error: ' + error;
-                });
+            console.log('URL entered:', url); // سجل URL المدخل
+            const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            const fileId = match ? match[1] : 'File ID not found.';
+            console.log('Extracted file ID:', fileId); // سجل ملف ID المستخرج
+            document.getElementById('result').innerText = `https://drive.google.com/uc?export=download&id=${fileId}`;
         }
     </script>
 </body>
